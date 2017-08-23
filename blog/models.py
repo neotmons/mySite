@@ -1,5 +1,6 @@
 import re
 from django.db import models
+from django.conf import settings
 from django.forms import ValidationError
 from django.utils import timezone
 
@@ -17,6 +18,8 @@ class Post(models.Model):
         ('p', 'Published'),
         ('w','Withraw'),
     )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    
     title = models.CharField(max_length = 100, verbose_name='제목',
     help_text = '포스팅 제목을 입력해주세요. 최대 100자 내외')
     content = models.TextField(verbose_name='내용')
