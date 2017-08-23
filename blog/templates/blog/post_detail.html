@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <header>
+        <meta charset="utf-8" />
+        <title>{{ post.title }}</title>
+    </header>
+    <body>
+        <h1>{{ post.title }}</h1>
+
+        {{ post.content|linebreaks }}
+
+        <hr>
+
+        <h3>Comments</h3>
+        
+        <ul>
+        {% for comment in post.comment_set.all %}
+            <li>
+                {{ comment.message }}
+              <small>{{ comment.author }}</small>
+             <small>{{ comment.udpate_at}}</small>
+            </li>
+        {% endfor %}
+        </ul>                
+    </body>
+</html>

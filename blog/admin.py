@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Tag
 
 # Register your models here.
 @admin.register(Post)
@@ -24,4 +24,13 @@ class PostAdmin(admin.ModelAdmin):
         self.message_user(request, '{}건의 포스핑을 Draft 상태로 변경'.format(updated_count))
     make_draft.short_description = '지정 포스팅을 Draft 상태로 변경합니다.'
 
-admin.site.register(Comment) 
+#admin.site.register(Comment) 
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+ #   pass
+    list_display = ['id', 'message', 'post', 'create_at', 'update_at']
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
