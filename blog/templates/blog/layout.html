@@ -6,10 +6,8 @@
     <body>
         <h1>Tmons blog</h1>
 
-        {% for post in post_list %}
-            <a href="{% url "blog:post_detail" post.id %}">{{ post.title }} </a>
-        {% endfor %}
-
+        {% block content %}
+        {% endblock %}
         <hr/>
         &copy; 2017. tmons
     </body>
